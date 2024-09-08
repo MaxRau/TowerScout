@@ -247,14 +247,14 @@ def extract_boxes3(image_path, run_path, upper_conf=1.0):
 
 
 def inference_fine_tune(run_name, conf):
-  !python test.py \
-    --weights best.pt \
-    --data data.yaml \
-    --img-size 640 \
-    --iou 0.5 \
-    --conf-thres $conf \
-    --save-txt \
-    --name $run_name
+  # !python test.py \
+  #   --weights best.pt \
+  #   --data data.yaml \
+  #   --img-size 640 \
+  #   --iou 0.5 \
+  #   --conf-thres $conf \
+  #   --save-txt \
+  #   --name $run_name
 
   tp, fp, fn = evaluate_run(run_name)
   print('TRUE POSITIVES', tp, 
@@ -292,7 +292,7 @@ def get_multiple(master_path):
 
 def evaluate_single(run_name, weights_path):
   """take a single path and return the results on a validation set."""
-  !python test.py \
+  """python test.py \
     --weights $weights_path \
     --data data.yaml \
     --img-size 640 \
@@ -300,7 +300,7 @@ def evaluate_single(run_name, weights_path):
     --conf-thres .25 \
     --save-txt \
     --save-conf \
-    --name $run_name
+    --name $run_name"""
 
   tp, fp, fn = evaluate_run(run_name)
   print('\n############ RUN NAME :', run_name, "############",
